@@ -1,0 +1,192 @@
+<div class="min-h-screen bg-slate-50 font-sans text-gray-800 antialiased">
+    <main class="grid min-h-screen lg:grid-cols-2">
+
+        <aside
+            class="relative hidden overflow-hidden bg-gradient-to-br from-violet-600 via-violet-700 to-indigo-800 p-12 text-white lg:flex lg:flex-col lg:justify-between xl:p-16"
+            aria-label="About Connectly">
+            <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/10"></div>
+            <div class="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-indigo-400/20"></div>
+            <div class="pointer-events-none absolute right-1/4 top-1/2 h-40 w-40 rounded-full bg-violet-400/20"></div>
+
+            <div class="relative flex items-center gap-3">
+                <span
+                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-xl ring-1 ring-white/25">
+                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                </span>
+                <span class="text-2xl font-semibold tracking-tight">Connectly</span>
+            </div>
+
+            <div class="relative max-w-md">
+                <h1 class="text-4xl font-bold leading-tight tracking-tight xl:text-5xl">Your world.<br>Your people.</h1>
+                <p class="mt-4 text-base leading-relaxed text-violet-100">
+                    Connect with friends, share the moments that matter, and discover communities built around the
+                    things you love.
+                </p>
+
+                <div class="mt-10 space-y-4" aria-hidden="true">
+                    <div class="rounded-2xl bg-white p-4 text-gray-800 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-indigo-500 text-sm font-semibold text-white">KM</span>
+                            <div class="leading-tight">
+                                <p class="text-sm font-semibold">kerolos micheal</p>
+                                <p class="text-xs text-gray-500">Shared a moment · 2m ago</p>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-sm text-gray-600">Sunrise hike with the crew this morning. Best way to start
+                            the week!</p>
+                        <div class="mt-3 flex items-center gap-5 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-heart mr-1.5 text-violet-600"></i>248</span>
+                            <span><i class="fa-regular fa-comment mr-1.5"></i>32</span>
+                            <span><i class="fa-solid fa-share-nodes mr-1.5"></i>12</span>
+                        </div>
+                    </div>
+
+                    <div class="ml-10 flex items-end gap-3">
+                        <span
+                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-300 text-xs font-semibold text-indigo-900">OM</span>
+                        <div
+                            class="rounded-2xl rounded-bl-sm bg-white/15 px-4 py-2.5 text-sm text-white ring-1 ring-white/20">
+                            That view is unreal. Count me in next time!
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-300 text-xs font-semibold text-violet-900 ring-2 ring-violet-700">LK</span>
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-300 text-xs font-semibold text-indigo-900 ring-2 ring-violet-700">MH</span>
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-semibold text-violet-700 ring-2 ring-violet-700">YT</span>
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-500 text-xs font-semibold text-white ring-2 ring-violet-700">+9</span>
+                        </div>
+                        <p class="text-sm text-violet-100"><i class="fa-solid fa-users mr-1.5"></i>Communities are
+                            waiting for you</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="relative text-sm text-violet-200">&copy; 2026 Connectly. All rights reserved.</p>
+        </aside>
+
+        <section class="flex items-center justify-center bg-white px-4 py-4 sm:px-8 lg:px-12"
+            aria-labelledby="login-heading">
+            <div class="w-full max-w-md">
+
+                <div class="mb-8 flex items-center gap-2.5 lg:hidden">
+                    <span
+                        class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 text-white">
+                        <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                    </span>
+                    <span class="text-xl font-semibold tracking-tight text-gray-900">Connectly</span>
+                </div>
+
+                <header>
+                    <h2 id="login-heading" class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Log in to
+                        Connectly</h2>
+                    <p class="mt-2 text-sm text-gray-500">Join Connectly and start sharing with the people who matter to
+                        you.</p>
+                </header>
+
+                <form (ngSubmit)="submitLogin()" [formGroup]="loginForm" id="login-form" class="mt-4 space-y-4"
+                    novalidate>
+                    <div>
+                        <label for="email" class="mb-1.5 block text-sm font-medium text-gray-700">
+                            Email address
+                        </label>
+
+                        <div class="relative">
+                            <i class="fa-solid fa-envelope pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+
+                            <input formControlName="email" type="email" id="email" name="email" autocomplete="email"
+                                placeholder="name@example.com"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30" />
+                        </div>
+
+                        @if (loginForm.get("email")?.invalid && loginForm.get("email")?.touched) {
+                        <div class="mt-1 rounded border border-gray-300 bg-red-100 p-1">
+                            @if (loginForm.get("email")?.hasError("required")) {
+                            <p class="mt-1.5 text-sm text-red-600">
+                                Email is required.
+                            </p>
+                            }
+
+                            @if (loginForm.get("email")?.hasError("email")) {
+                            <p class="mt-1.5 text-sm text-red-600">
+                                Please enter a valid email.
+                            </p>
+                            }
+                        </div>
+                        }
+                    </div>
+
+                    <div>
+                        <label for="password" class="mb-1.5 block text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+
+                        <div class="relative">
+                            <i class="fa-solid fa-lock pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+
+                            <input #inputPassword formControlName="password" type="password" id="password" name="password"
+                                autocomplete="current-password" placeholder="Enter your password"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30" />
+                            
+                            <button (click)="togglePassword(inputPassword)" type="button" aria-label="Show confirm password"
+                                class="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 transition hover:text-violet-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-600">
+                                <i class="fa-solid fa-eye text-sm" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        @if (loginForm.get("password")?.invalid && loginForm.get("password")?.touched) {
+                        <div class="mt-1 rounded border border-gray-300 bg-red-100 p-1">
+                            @if (loginForm.get("password")?.hasError("required")) {
+                            <p class="mt-1.5 text-sm text-red-600">
+                                Password is required.
+                            </p>
+                            }
+                        </div>
+                        }
+                    </div>
+
+                    <button type="submit" [disabled]="isLoading()"
+                        class="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-5 text-sm font-semibold text-white transition hover:from-violet-700 hover:to-indigo-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-violet-300 disabled:cursor-not-allowed disabled:opacity-70">
+                        Login
+
+                        @if (isLoading()) {
+                        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+                        }
+                    </button>
+
+                    @if (loginErrorMessage()) {
+                    <div class="mt-1 rounded border border-gray-300 bg-red-100 p-1">
+                        <p class="mt-1.5 text-sm text-red-600">
+                            {{ loginErrorMessage() }}
+                        </p>
+                    </div>
+                    }
+
+                    @if (loginSuccssMessage()) {
+                    <div class="mt-1 rounded border border-gray-300 bg-green-100 p-1">
+                        <p class="mt-1.5 text-sm text-green-600">
+                            {{ loginSuccssMessage() }}
+                        </p>
+                    </div>
+                    }
+                </form>
+
+                <p class="mt-4 text-center text-sm text-gray-600">
+                    Create your account
+                    <a routerLink="/register"
+                        class="font-semibold text-violet-700 underline-offset-2 hover:underline focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet-600">log
+                        in</a>
+                </p>
+            </div>
+        </section>
+
+    </main>
+</div>

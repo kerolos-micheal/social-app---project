@@ -1,0 +1,147 @@
+<div class="mx-auto max-w-7xl px-3 py-4 sm:py-6">
+  @if (isLoadingProfile()) {
+  <section class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+    <div class="h-48 animate-pulse bg-gradient-to-r from-violet-100 via-violet-200 to-indigo-100"></div>
+    <div class="space-y-3 p-6">
+      <div class="h-7 w-48 animate-pulse rounded bg-slate-100"></div>
+      <div class="h-4 w-32 animate-pulse rounded bg-slate-100"></div>
+    </div>
+  </section>
+  } @else if (profile(); as user) {
+  <div class="space-y-5">
+    <section class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+      <div class="relative h-44 bg-gradient-to-br from-violet-700 via-violet-800 to-indigo-900 sm:h-56 lg:h-64"
+        [style.background-image]="coverStyle()" [class.bg-cover]="!!user.cover" [class.bg-center]="!!user.cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+      </div>
+
+      <div class="relative px-4 pb-6 sm:px-8">
+        <div class="-mt-12 flex flex-col gap-5 sm:-mt-16 lg:flex-row lg:items-end lg:justify-between">
+          <div class="flex min-w-0 items-end gap-4">
+            <img [src]="user.photo || defaultProfilePhoto" [alt]="user.name || 'Profile photo'"
+              class="h-24 w-24 shrink-0 rounded-full border-4 border-white bg-white object-cover shadow-md sm:h-32 sm:w-32">
+            <div class="min-w-0 pb-1">
+              <h1 class="truncate text-2xl font-black tracking-tight text-slate-900 sm:text-4xl">
+                {{ user.name || 'Your profile' }}
+              </h1>
+              @if (user.username) {
+              <p class="mt-1 truncate text-base font-semibold text-slate-500 sm:text-lg">@{{ user.username }}</p>
+              }
+              <span class="mt-3 inline-flex items-center gap-2 rounded-full border border-violet-100 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-700">
+                <i class="fa-solid fa-users" aria-hidden="true"></i>Route Posts member
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 lg:w-[440px]">
+            <div class="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center sm:py-4">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-slate-500 sm:text-xs">Posts</p>
+              <p class="mt-1 text-2xl font-black text-slate-900">{{ myPosts().length }}</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center sm:py-4">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-slate-500 sm:text-xs">Followers</p>
+              <p class="mt-1 text-2xl font-black text-slate-900">{{ followerCount() }}</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center sm:py-4">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-slate-500 sm:text-xs">Following</p>
+              <p class="mt-1 text-2xl font-black text-slate-900">{{ followingCount() }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-4 lg:grid-cols-[1.3fr_.7fr]">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <h2 class="text-sm font-extrabold text-slate-800">About</h2>
+            <div class="mt-3 space-y-2 text-sm text-slate-600">
+              @if (user.email) {
+              <p class="flex items-center gap-2 break-all"><i class="fa-regular fa-envelope text-slate-500" aria-hidden="true"></i>{{ user.email }}</p>
+              }
+              <p class="flex items-center gap-2"><i class="fa-solid fa-user-check text-slate-500" aria-hidden="true"></i>Active on Route Posts</p>
+            </div>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            <div class="rounded-2xl border border-violet-100 bg-violet-50/70 px-4 py-3">
+              <p class="text-xs font-bold uppercase tracking-wide text-violet-700">My posts</p>
+              <p class="mt-1 text-2xl font-black text-slate-900">{{ myPosts().length }}</p>
+            </div>
+            <div class="rounded-2xl border border-violet-100 bg-violet-50/70 px-4 py-3">
+              <p class="text-xs font-bold uppercase tracking-wide text-violet-700">Saved posts</p>
+              <p class="mt-1 text-2xl font-black text-slate-900">{{ savedPosts().length }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+        <div class="grid w-full grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1.5 sm:inline-flex sm:w-auto">
+          <button type="button" (click)="selectTab('posts')"
+            [class]="activeTab() === 'posts' ? 'inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-violet-700 shadow-sm' : 'inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-slate-600 transition hover:text-violet-700'">
+            <i class="fa-regular fa-file-lines" aria-hidden="true"></i>My Posts
+          </button>
+          <button type="button" (click)="selectTab('saved')"
+            [class]="activeTab() === 'saved' ? 'inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-violet-700 shadow-sm' : 'inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-slate-600 transition hover:text-violet-700'">
+            <i class="fa-regular fa-bookmark" aria-hidden="true"></i>Saved
+          </button>
+        </div>
+        <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-bold text-violet-700">
+          {{ displayedPosts().length }}
+        </span>
+      </div>
+
+      @if (displayedPostsError()) {
+      <p role="alert" class="rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">
+        {{ displayedPostsError() }}
+      </p>
+      }
+
+      @if (isLoadingDisplayedPosts()) {
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center text-sm font-semibold text-slate-500">
+        Loading {{ activeTab() === 'posts' ? 'your posts' : 'saved posts' }}...
+      </div>
+      } @else if (displayedPosts().length === 0) {
+      <div class="rounded-2xl border border-dashed border-slate-300 bg-white px-5 py-12 text-center">
+        <i class="fa-regular fa-file-lines text-2xl text-violet-500" aria-hidden="true"></i>
+        <p class="mt-3 font-bold text-slate-800">{{ activeTab() === 'posts' ? 'No posts yet' : 'No saved posts yet' }}</p>
+        <p class="mt-1 text-sm text-slate-500">Your {{ activeTab() === 'posts' ? 'posts' : 'saved posts' }} will appear here.</p>
+      </div>
+      } @else {
+      <div class="space-y-4">
+        @for (post of displayedPosts(); track post._id) {
+        <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div class="p-4">
+            <div class="flex items-center gap-3">
+              <img [src]="post.user.photo || defaultProfilePhoto" [alt]="post.user.name"
+                class="h-10 w-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <p class="truncate text-sm font-extrabold text-slate-900">{{ post.user.name }}</p>
+                <p class="truncate text-xs font-semibold text-slate-500">@{{ post.user.username }}</p>
+              </div>
+            </div>
+            @if (post.body) {
+            <p class="whitespace-pre-wrap break-words pt-3 text-[15px] leading-relaxed text-slate-800">{{ post.body }}</p>
+            }
+          </div>
+          @if (post.image) {
+          <div class="border-y border-slate-200 bg-slate-950/95">
+            <img [src]="post.image" alt="Post image" class="mx-auto max-h-[560px] max-w-full object-contain">
+          </div>
+          }
+          <div class="flex flex-wrap items-center gap-4 px-4 py-3 text-sm font-semibold text-slate-600">
+            <span><i class="fa-regular fa-thumbs-up mr-1 text-violet-600" aria-hidden="true"></i>{{ post.likesCount }} likes</span>
+            <span><i class="fa-solid fa-share-nodes mr-1 text-violet-600" aria-hidden="true"></i>{{ post.sharesCount }} shares</span>
+            <span><i class="fa-regular fa-comment mr-1 text-violet-600" aria-hidden="true"></i>{{ post.commentsCount }} comments</span>
+          </div>
+        </article>
+        }
+      </div>
+      }
+    </section>
+  </div>
+  } @else {
+  <div role="alert" class="rounded-2xl border border-red-100 bg-red-50 p-5 text-sm text-red-700">
+    {{ profileError() || 'Could not load your profile.' }}
+  </div>
+  }
+</div>

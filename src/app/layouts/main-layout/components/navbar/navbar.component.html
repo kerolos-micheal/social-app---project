@@ -1,0 +1,76 @@
+<nav class="fixed top-0 start-0 z-20 w-full border-b border-gray-200 bg-white">
+    <div class="mx-auto flex max-w-screen-xl items-center justify-between gap-3 p-4">
+
+        <div class="flex shrink-0 items-center gap-3">
+            <span
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 via-violet-700 to-indigo-800 text-xl text-white">
+                <i class="fa-solid fa-comments" aria-hidden="true"></i>
+            </span>
+
+            <span class="hidden text-2xl font-semibold tracking-tight sm:inline">
+                Connectly
+            </span>
+        </div>
+
+        <ul class="flex min-w-0 items-center gap-3 text-sm font-medium sm:gap-6 sm:text-base">
+            <li>
+                <a routerLink="/feed" routerLinkActive="text-violet-700"
+                    class="whitespace-nowrap text-gray-700 transition hover:text-violet-700">
+                    <i class="fa-regular fa-house"></i>Feed
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/profile" routerLinkActive="text-violet-700"
+                    class="whitespace-nowrap text-gray-700 transition hover:text-violet-700">
+                    <i class="fa-regular fa-user"></i>Profile
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/notifications" routerLinkActive="text-violet-700"
+                    class="whitespace-nowrap text-gray-700 transition hover:text-violet-700">
+                    <i class="fa-regular fa-bell"></i>Notification
+                </a>
+            </li>
+        </ul>
+
+        <div class="relative shrink-0">
+    <button type="button" (click)="toggleUserMenu()" [attr.aria-expanded]="isUserMenuOpen" aria-label="Open user menu"
+        class="flex rounded-full focus:outline-none focus:ring-2 focus:ring-violet-500">
+        <img class="h-9 w-9 rounded-full object-cover" src="/assets/default-profile.png" alt="User profile" />
+    </button>
+
+    @if (isUserMenuOpen) {
+    <div class="absolute right-0 top-12 z-50 w-48 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+        <div class="border-b border-gray-200 px-4 py-3">
+            <p class="text-sm font-semibold text-gray-800">User Name</p>
+        </div>
+
+        <div class="p-2">
+            <a routerLink="/settings" (click)="closeUserMenu()"
+                class="flex cursor-pointer items-center gap-2 rounded-lg px-2 py-2.5 text-sm text-gray-700 hover:bg-gray-100">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <button type="button" (click)="navLogout()"
+                class="flex w-full items-center gap-2 rounded-lg px-2 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-100">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                LogOut
+            </button>
+
+            <button type="button" routerLink="/change-pass" (click)="closeUserMenu()"
+                class="flex w-full items-center gap-2 rounded-lg px-2 py-2.5 text-left text-sm text-gray-700 hover:bg-gray-100">
+                <i class="fa-solid fa-key"></i>
+                Change Password
+            </button>
+        </div>
+    </div>
+    }
+</div>
+
+    </div>
+</nav>
+
+

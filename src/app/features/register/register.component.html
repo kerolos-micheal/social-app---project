@@ -1,0 +1,288 @@
+<div class="min-h-screen bg-slate-50 font-sans text-gray-800 antialiased">
+    <main class="grid min-h-screen lg:grid-cols-2">
+
+        <aside
+            class="relative hidden overflow-hidden bg-gradient-to-br from-violet-600 via-violet-700 to-indigo-800 p-12 text-white lg:flex lg:flex-col lg:justify-between xl:p-16"
+            aria-label="About Connectly">
+            <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/10"></div>
+            <div class="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-indigo-400/20"></div>
+            <div class="pointer-events-none absolute right-1/4 top-1/2 h-40 w-40 rounded-full bg-violet-400/20"></div>
+
+            <div class="relative flex items-center gap-3">
+                <span
+                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-xl ring-1 ring-white/25">
+                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                </span>
+                <span class="text-2xl font-semibold tracking-tight">Connectly</span>
+            </div>
+
+            <div class="relative max-w-md">
+                <h1 class="text-4xl font-bold leading-tight tracking-tight xl:text-5xl">Your world.<br>Your people.</h1>
+                <p class="mt-4 text-base leading-relaxed text-violet-100">
+                    Connect with friends, share the moments that matter, and discover communities built around the
+                    things you love.
+                </p>
+
+                <div class="mt-10 space-y-4" aria-hidden="true">
+                    <div class="rounded-2xl bg-white p-4 text-gray-800 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-indigo-500 text-sm font-semibold text-white">KM</span>
+                            <div class="leading-tight">
+                                <p class="text-sm font-semibold">kerolos micheal</p>
+                                <p class="text-xs text-gray-500">Shared a moment · 2m ago</p>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-sm text-gray-600">Sunrise hike with the crew this morning. Best way to start
+                            the week!</p>
+                        <div class="mt-3 flex items-center gap-5 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-heart mr-1.5 text-violet-600"></i>248</span>
+                            <span><i class="fa-regular fa-comment mr-1.5"></i>32</span>
+                            <span><i class="fa-solid fa-share-nodes mr-1.5"></i>12</span>
+                        </div>
+                    </div>
+
+                    <div class="ml-10 flex items-end gap-3">
+                        <span
+                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-300 text-xs font-semibold text-indigo-900">OM</span>
+                        <div
+                            class="rounded-2xl rounded-bl-sm bg-white/15 px-4 py-2.5 text-sm text-white ring-1 ring-white/20">
+                            That view is unreal. Count me in next time!
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-300 text-xs font-semibold text-violet-900 ring-2 ring-violet-700">LK</span>
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-300 text-xs font-semibold text-indigo-900 ring-2 ring-violet-700">MH</span>
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-semibold text-violet-700 ring-2 ring-violet-700">YT</span>
+                            <span
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-violet-500 text-xs font-semibold text-white ring-2 ring-violet-700">+9</span>
+                        </div>
+                        <p class="text-sm text-violet-100"><i class="fa-solid fa-users mr-1.5"></i>Communities are
+                            waiting for you</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="relative text-sm text-violet-200">&copy; 2026 Connectly. All rights reserved.</p>
+        </aside>
+
+        <section class="flex items-center justify-center bg-white px-4 py-4 sm:px-8 lg:px-12"
+            aria-labelledby="register-heading">
+            <div class="w-full max-w-md">
+
+                <div class="mb-8 flex items-center gap-2.5 lg:hidden">
+                    <span
+                        class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 text-white">
+                        <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                    </span>
+                    <span class="text-xl font-semibold tracking-tight text-gray-900">Connectly</span>
+                </div>
+
+                <header>
+                    <h2 id="register-heading" class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Create
+                        your account</h2>
+                    <p class="mt-2 text-sm text-gray-500">Join Connectly and start sharing with the people who matter to
+                        you.</p>
+                </header>
+
+                <form (ngSubmit)="submitRegister()" [formGroup]="registerForm" id="register-form" class="mt-4 space-y-1"
+                    novalidate>
+
+                    <div>
+                        <label for="name" class="mb-1.5 block text-sm font-medium text-gray-700">Full name</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <input formControlName="name" type="text" id="name" name="name"
+                                autocomplete="name" placeholder="Your full name" aria-describedby="name-error"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                        </div>
+
+                        @if (registerForm.get("name")?.invalid && registerForm.get("name")?.touched) {
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">
+                            @if (registerForm.get("name")?.hasError("required")) {
+                            <p id="name-error" class="mt-1.5  text-sm text-red-600 ">Full Name is required.</p>
+
+                            }
+                            @if (registerForm.get("name")?.hasError("minlength")) {
+                            <p id="name-error" class="mt-1.5  text-sm text-red-600 ">Name must be at least 3
+                                characters.</p>
+
+                            }
+                            @if (registerForm.get("name")?.hasError("maxlength")) {
+                            <p id="name-error" class="mt-1.5  text-sm text-red-600 ">Name must be at most 20
+                                characters.</p>
+
+                            }
+                        </div>}
+                    </div>
+
+                    <div>
+                        <label for="username" class="mb-1.5 block text-sm font-medium text-gray-700">Username</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-at pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <input formControlName="username" type="text" id="username" name="username"
+                                autocomplete="username" placeholder="choose_a_username" autocapitalize="none"
+                                spellcheck="false" aria-describedby="username-hint username-error"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                        </div>
+                        <p id="username-error" class="mt-1.5 hidden text-sm text-red-600"></p>
+                    </div>
+
+                    <div>
+                        <label for="email" class="mb-1.5 block text-sm font-medium text-gray-700">Email address</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-envelope pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <input formControlName="email" type="email" id="email" name="email" autocomplete="email"
+                                placeholder="name@example.com" aria-describedby="email-error"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                        </div>
+                        @if (registerForm.get("email")?.invalid && registerForm.get("email")?.touched) {
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">@if
+                            (registerForm.get("email")?.hasError("required")) {
+                            <p id="email-error" class="mt-1.5 text-sm text-red-600">Email is required.</p>
+                            }
+                            @if (registerForm.get("email")?.hasError("email")) {
+                            <p id="email-error" class="mt-1.5 text-sm text-red-600">please enter a vaild Email</p>
+                            }
+                        </div>
+
+                        }
+                    </div>
+                    <div>
+                        <label for="gender" class="mb-1.5 block text-sm font-medium text-gray-700">Gender</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-venus-mars pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <select formControlName="gender" id="gender" name="gender" required
+                                aria-describedby="gender-error"
+                                class="block h-11 w-full appearance-none rounded-lg border border-gray-300 bg-white pl-10 pr-10 text-sm text-gray-900 transition invalid:text-gray-400 focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                                <option value="" disabled selected hidden>Select your gender</option>
+                                <option value="male" class="text-gray-900">Male</option>
+                                <option value="female" class="text-gray-900">Female</option>
+                            </select>
+                        </div>
+                        @if (registerForm.get("gender")?.invalid && registerForm.get("gender")?.touched) {
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">
+                            <p id="gender-error" class="mt-1.5 text-sm text-red-600">gender is required</p>
+                        </div>
+
+
+                        }
+
+                    </div>
+                    <div>
+                        <label for="dateOfBirth" class="mb-1.5 block text-sm font-medium text-gray-700">Date of
+                            birth</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-cake-candles pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <input formControlName="dateOfBirth" type="date" id="dateOfBirth" name="dateOfBirth"
+                                autocomplete="bday" required max="2026-10-14" aria-describedby="dateOfBirth-error"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-900 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                        </div>
+                        @if (registerForm.get("dateOfBirth")?.invalid && registerForm.get("dateOfBirth")?.touched) {
+
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">
+                            <p id="dateOfBirth-error" class="mt-1.5 text-sm text-red-600">Date of birth is required</p>
+                        </div>
+
+                        }
+
+                    </div>
+                    <div>
+                        <label for="password" class="mb-1.5 block text-sm font-medium text-gray-700">Password</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-lock pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <input #inputPassword formControlName="password" type="password" id="password" name="password"
+                                autocomplete="new-password" placeholder="Create a password"
+                                aria-describedby="password-hint password-error"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-11 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                            <button (click)="togglePassword(inputPassword)" type="button" aria-label="Show password"
+                                class="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 transition hover:text-violet-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-600">
+                                <i class="fa-solid fa-eye text-sm" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        @if (registerForm.get("password")?.invalid && registerForm.get("password")?.touched) {
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">@if
+                            (registerForm.get("password")?.hasError("required")) {
+                            <p id="password-error" class="mt-1.5  text-sm text-red-600">password is required</p>
+                            }
+                            @if (registerForm.get("password")?.hasError("pattern")) {
+                            <p id="password-error" class="mt-1.5  text-sm text-red-600">password must be 8-12 characters
+                                and
+                                contain both numbers and letters</p>
+                            }
+                        </div>
+
+
+                        }
+                    </div>
+
+                    <div>
+                        <label for="rePassword" class="mb-1.5 block text-sm font-medium text-gray-700">Confirm
+                            password</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-shield-halved pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                                aria-hidden="true"></i>
+                            <input #inputRepassword formControlName="rePassword" type="password" id="rePassword"
+                                name="rePassword" autocomplete="new-password" placeholder="Re-enter your password"
+                                aria-describedby="rePassword-error"
+                                class="block h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-11 text-sm text-gray-900 placeholder-gray-400 transition focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600/30">
+                            <button (click)="togglePassword(inputRepassword)" type="button" aria-label="Show confirm password"
+                                class="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 transition hover:text-violet-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-600">
+                                <i class="fa-solid fa-eye text-sm" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                     @if (registerForm.get("rePassword")?.invalid && registerForm.get("rePassword")?.touched) {
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">@if
+                            (registerForm.get("rePassword")?.hasError("required")) {
+                            <p id="rePassword-error" class="mt-1.5  text-sm text-red-600">rePassword is required</p>
+                            }
+                            @if (registerForm.get("rePassword")?.hasError("mismatch")) {
+                            <p id="rePassword-error" class="mt-1.5  text-sm text-red-600">repassword do not match</p>
+                            }
+                        </div>
+
+
+                        }
+                    </div>
+                    <button type="submit"
+                        class="flex h-11 w-full items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-5 text-sm font-semibold text-white transition hover:from-violet-700 hover:to-indigo-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-violet-300">
+                        Create Account 
+                        @if (isLoading()) {
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        } 
+                    
+                    </button>
+                       @if (registerErrorMessage()) {
+                        <div class="rounded bg-red-100 border border-gray-300 p-1 mt-1">
+                            <p class="mt-1.5  text-sm text-red-600 ">Full Name is required.</p>
+                        </div>
+                       }
+                       @if (registerSuccssMessage()) {
+                        <div class="rounded bg-green-100 border border-gray-300 p-1 mt-1">
+                            <p class="mt-1.5  text-sm text-green-600 ">{{registerSuccssMessage()}}</p>
+                        </div>
+                       }
+                </form>
+
+                <p class="mt-4 text-center text-sm text-gray-600">
+                    Already have an account?
+                    <a routerLink="/login"
+                        class="font-semibold text-violet-700 underline-offset-2 hover:underline focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet-600">Sign
+                        in</a>
+                </p>
+            </div>
+        </section>
+        
+    </main>
+</div>
